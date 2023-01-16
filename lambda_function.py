@@ -18,12 +18,6 @@ def lambda_handler(event, context):
     NOTION_PARENT_DATABASE_ID = os.environ['NOTION_PARENT_DATABASE_ID']
     NOTION_POINTER_PAGE_ID = os.environ['NOTION_POINTER_PAGE_ID']
 
-    # date range
-    NOW = datetime.now()
-    # this setting exepects that this function invoked every hour
-    START = (NOW - timedelta(hours=1)).replace(minute=0, second=0, microsecond=0).astimezone(timezone.utc)
-    END   = START + timedelta(hours=1)
-
     # get pointer from Notion pointer page
     pointer_block = notion.get_blocks_by_page_id(NOTION_API_TOKEN, NOTION_POINTER_PAGE_ID)[0]
     pointer_block_id = pointer_block['id']

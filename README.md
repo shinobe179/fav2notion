@@ -48,3 +48,4 @@ fav2notion
 - Serverless Architecture Modelでデプロイをしやすくする
     - でも `sam` のインストールを案内しなきゃならないの面倒
 - loggerの実装
+- Python3.10で作っちゃったけど、Lambdaのランタイムは3.9までしかなかった

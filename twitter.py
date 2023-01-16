@@ -29,7 +29,8 @@ class TwitterAPIClient:
         """
         liked_tweets = self.client.get_liked_tweets(user_id,
         user_auth=True,
-        tweet_fields=['created_at']).data
+        tweet_fields=['created_at'],
+        max_results=30).data
         print(f'[*] number of liked_tweets: {len(liked_tweets)}')
 
         return liked_tweets

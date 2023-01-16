@@ -10,11 +10,15 @@ fav2notion
 - Notionでやること
     - My integrationを作ってAPIトークンを取得します。
         - pageをretrieve, insert, updateする権限が必要です。
-    - ツイート記録用データベースと、ポインタ記録用ページを作ります。
+    - ツイート記録用データベースを作ります。
+        - 「Title」というタイトル列と、「URL」というURL入力列があれば、コードの修正をせずに動かせます。
+        - 各列の名前が違ったり、追加で別の列で情報を入力したい場合は、notion.pyを編集してください。
+    - ポインタ記録用ページを作ります。
     - ツイート記録用データベースと、ポインタ記録用ページそれぞれでMy integrationをconnectします。
     - いいねしたツイートの保存は、最近いいねしたものから遡って行われます。初回実行時に保存したいツイートのうち、最も古いツイートのツイートIDを、ポインタ記録用ページに（H1やH2ではなく、テキストで）記録しておきます。
 - AWSでやること
-    - このリポジトリをクローンしてきて `make` すると、lambda_packages.zipというファイルが生成されます。
+    - このリポジトリをクローンします。
+    - `make` すると、lambda_packages.zipというファイルが生成されます。
         - `poetry` が必要です。 `pip install --user poetry` などしてインストールしてください。
     - ランタイムとしてPython3.9を使うAWS Lambda関数を作って、lambda_packages.zipをアップロードしてください。
     - おびただしい数の環境変数が必要です。根気よく設定してください。
@@ -27,9 +31,9 @@ fav2notion
         - `NOTION_API_TOKEN`
             - NotionのAPIトークン
         - `NOTION_POINTER_PAGE_ID`
-            - ポインターを記録しておくNotionページのID
+            - ポインタ記録用NotionページのID
         - `NOTION_PARENT_DATABASE_ID`
-            - ツイートを記録するNotionデータベースのID
+            - ツイート記録用NotionデータベースのID
     - Lambda関数の実行時間を適当に設定してください。
     - EventBridge Schedulerで任意の時間間隔で実行するよう設定してください。
 

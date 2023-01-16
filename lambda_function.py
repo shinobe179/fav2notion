@@ -6,7 +6,7 @@ from  twitter import TwitterAPIClient
 
 
 def lambda_handler(event, context):
-    # env fot Twitter
+    # env for Twitter
     twitter_user_id = os.environ['TWITTER_USER_ID']
     twitter_consumer_key=os.environ['TWITTER_API_KEY']
     twitter_consumer_secret=os.environ['TWITTER_API_KEY_SECRET']

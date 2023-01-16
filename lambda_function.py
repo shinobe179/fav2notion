@@ -1,4 +1,5 @@
 import os
+import sys
 
 import notion
 from  twitter import TwitterAPIClient
@@ -27,10 +28,17 @@ def lambda_handler(event, context):
         twitter_consumer_secret,
         twitter_access_token,
         twitter_access_token_secret)
-    liked_tweets = twitter_client.get_liked_tweets(twitter_user_id)
 
     # record next pointer
+    liked_tweets = twitter_client.get_liked_tweets(twitter_user_id, max_results=5)
     next_pointer = str(liked_tweets[0].id)
+
+    # If there is no new liked tweet, stop processing
+    if str(pointer) == next_pointer:
+        print('[*] No new likes. Bye. :-)')
+        sys.exit(0)
+
+    liked_tweets = twitter_client.get_liked_tweets(twitter_user_id, max_results=30)
 
     for lt in liked_tweets:
         if lt.id == pointer:

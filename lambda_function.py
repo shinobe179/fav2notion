@@ -1,5 +1,4 @@
 import os
-from datetime import datetime, timezone, timedelta
 
 import notion
 from  twitter import TwitterAPIClient

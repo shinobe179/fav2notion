@@ -13,7 +13,7 @@ class TwitterAPIClient:
             access_token_secret=access_token_secret,
         )
 
-    def get_liked_tweets(self, user_id):
+    def get_liked_tweets(self, user_id, max_results):
         """
         Get liked specified user's liked tweets.
 
@@ -30,7 +30,7 @@ class TwitterAPIClient:
         liked_tweets = self.client.get_liked_tweets(user_id,
         user_auth=True,
         tweet_fields=['created_at'],
-        max_results=30).data
+        max_results=max_results).data
         print(f'[*] number of liked_tweets: {len(liked_tweets)}')
 
         return liked_tweets

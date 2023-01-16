@@ -3,7 +3,7 @@ import os
 import requests
 
 
-def generate_tweet_page(database_id, tweet_id, tweet_text):
+def generate_tweet_page(database_id, tweet_id, tweet_text, author_id):
     """
     Generate page block object for tweet.
 
@@ -44,7 +44,22 @@ def generate_tweet_page(database_id, tweet_id, tweet_text):
                             'text': {
                                 'content': tweet_text,
                                 'link': {'url': f'https://twitter.com/TwitterJP/status/{tweet_id}'},
-                            }
+                            },
+                        },
+                    ],
+                },
+            },
+            {
+                'object': 'block',
+                'type': 'paragraph',
+                'paragraph': {
+                    'rich_text': [
+                        {
+                            'type': 'text',
+                            'text': {
+                                'content': f'(author_id: {author_id})',
+                                'link': {'url': f'https://twitter.com/i/user/{author_id}'},
+                            },
                         },
                     ],
                 },

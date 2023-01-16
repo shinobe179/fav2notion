@@ -49,7 +49,7 @@ def lambda_handler(event, context):
         else:
             print(f'[*] Tweet ID {lt.id}')
             page = notion.generate_tweet_page(NOTION_PARENT_DATABASE_ID,
-                lt.id, lt.text)
+                lt.id, lt.text, lt.author_id)
             notion.create_page(NOTION_API_TOKEN, page)
             print(f'[*] Tweet ID {lt.id} was inserted Notion database.')
 

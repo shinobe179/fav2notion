@@ -37,6 +37,8 @@ def lambda_handler(event, context):
     if str(pointer) == next_pointer:
         print('[*] No new likes. Bye. :-)')
         sys.exit(0)
+    else:
+        print('[*] New likes is found.')
 
     liked_tweets = twitter_client.get_liked_tweets(twitter_user_id, max_results=30)
 
